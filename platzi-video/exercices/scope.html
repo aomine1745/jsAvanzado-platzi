@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Scoped</title>
+  <style>
+    body {
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <a href="./index.html">Go Back!</a>
+  <p><em>Abre la consola</em></p>
+
+  <script>
+    var $ = () => { console.log('Soy un Fake JQuery :v') }   
+  </script>
+  <script>
+    // Global Scope
+    /* la variable $ esta en el scope global y puede ser accedida y modificada en cualquier partde del codigo */
+    var message = 'Hello, Platzi!'
+    var $ = message => { console.log(`Say: ${message}`) }   
+
+    // Function Scope
+    /* Esto imprimira 10 veces el número 10 ya que i aumenta hasta 10 y es el valor final que imprimira */
+    /* function printNumbers() {
+      for(var i = 0; i < 10; i++) {
+        setTimeout(function() {
+          console.log(i)
+        }, 100)
+      }
+    }
+    
+    printNumbers() */
+
+    /* Al pasar el valor de i a una funcion como parametro esta recoordara el valor que se le paso e imprimira los      números del 0 al 9 */
+    /* function printNumbers() {
+      for(var i = 0; i < 10; i++) {
+        function eventuallyPrintNumber(n) {
+          setTimeout(function() {
+            console.log(n)
+          }, 100)
+        }
+
+        eventuallyPrintNumber(i)
+      }
+    }
+
+    printNumbers() */
+
+    /* Y si usamos let en vez de var entonces en cada iteración se recordara el valor de 10 y se imprimiran los numeros del 0 a 9 */
+    function printNumbers() {
+      for(let i = 0; i < 10; i++) {
+          setTimeout(function() {
+            console.log(i)
+          }, 100)
+      }
+    }
+
+    printNumbers()
+
+    // Module Scope
+    /* Al momento de cargar nuestro script en nuestro HTML le podemos decir que es de type Module con lo cual todo      lo que tenga ese script no podra ser accedido desde el scope global */
+  </script>
+</body>
+</html>

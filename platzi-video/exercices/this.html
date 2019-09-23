@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>This</title>
+  <style>
+    body {
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+    <a href="./index.html">Go Back!</a>
+    <p><strong>this se refiere a un objeto. Ese objeto es el que actualmente está ejecutando un pedazo de código</strong></p>
+    <p><em>Abre la consola</em></p>
+
+    <script>
+      // this en el scope global
+      console.log(`this en el scope global es: ${this}`)
+
+      // this en el scope de una función
+      function whoIsThis() {
+        return this
+      }
+      /* Tambien sera window */
+      console.log(`this en el scope de una función es: ${whoIsThis()}`)
+      
+      // this en el scope de una función en strict mode
+      function whoIsThisStrict() {
+      'use strict'
+        return this
+      }
+      /* En modo estricto this sera undefined */
+      console.log(`this en el scope de una función es: ${whoIsThisStrict()}`)
+
+      // this en el contexto de un objeto
+      const person = {
+        name: 'aomine',
+        sayHello: function () {
+          console.log(`Hola soy ${this.name}`)
+        }
+      }
+      /* this dentro del objeto sera el mismo objeto */
+      person.sayHello()
+
+      // this cuando sacamos a una función de un objeto
+      /* si separamos la función en otra this ya no sera el objeto */
+      const action = person.sayHello
+      /* y no podra leer el atributo name del objeto */
+      action()
+
+      // this en el contexto de una "clase"
+      function Person(name) {
+        // this se inicia automaticamente como un objeto vacio
+        // this = {}
+        this.name = name
+      }
+      
+      /* Añadimos el método a su prototype */
+      Person.prototype.sayHello = function () {
+        console.log(`Hola me llamo ${this.name}`)
+      }
+
+      const akashi = new Person('akashi')
+      akashi.sayHello()
+    </script>
+</body>
+</html>

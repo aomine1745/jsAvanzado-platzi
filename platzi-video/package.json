@@ -1,0 +1,36 @@
+{
+  "name": "platzi-video",
+  "version": "1.0.0",
+  "description": "PLatzi video - JS Avanzado - Platzi",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html exercices/index.html exercices/**/*.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "js",
+    "avanzado",
+    "platzi",
+    "video"
+  ],
+  "author": "aomine- Dev",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "parcel-bundler": "^1.12.3",
+    "standard": "^14.1.0",
+    "typescript": "^3.6.3"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "ignore": [
+      "sw.js"
+    ]
+  },
+  "browserslist": [
+    "last 1 Chrome version"
+  ],
+  "dependencies": {
+    "@aomine-/mediaplayer": "^1.0.0"
+  }
+}

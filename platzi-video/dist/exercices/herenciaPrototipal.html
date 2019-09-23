@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Herencia Prototipal</title>
+  <style>body {
+      font-size: 24px;
+    }</style>
+</head>
+<body>
+    <a href="/exercices\index.html">Go Back!</a>
+    <p><strong>SomeObject.prototype</strong> es un objeto donde definimos el prototipo de las instancias de <strong>SomeObject.</strong> Es decir, las instancias de <strong>SomeObject</strong> van a "heredar" <strong>SomeObject.prototype.</strong></p>
+    <p><strong>SomeObject.[[prototype]]</strong> es el prototipo de <strong>SomeObject.</strong> Es decir, <strong>SomeObject</strong> "hereda" de <strong>SomeObject.prototype.</strong></p>
+    <p><em>Abre la consola</em></p>
+
+    <script>/* Usando la forma mas optima vista en prototype.html obtenemos esto */
+function Hero(name) {
+  this.name = name;
+}
+
+Hero.prototype.sayHello = function () {
+  console.log(`Hola soy ${this.name} y soy un Marine`);
+};
+
+const fujitora = new Hero('fujitora'); // propiedades de la instancia
+
+/* el objeto tiene acceso a la propiedad name */
+
+console.log(`name: ${fujitora.name}`); // propiedades de la clase
+
+/* el objeto tiene acceso al método sayHello */
+
+console.log(`sayHello: ${fujitora.sayHello}`); // propiedades heredadas ej: toString
+
+/* el objeto tiene acceso al método toString */
+
+console.log(`toString: ${fujitora.toString}`); // hasOwnPropertty (de donde sale toString o esto?)
+
+console.log('___');
+/* Fujitora tiene la proiedad name */
+
+console.log(`fujitora.hasOwnProperty('name'): ${fujitora.hasOwnProperty('name')}`);
+/* Pero Fujitora no tiene el método sayHello */
+
+console.log(`fujitora.hasOwnProperty('sayHello'): ${fujitora.hasOwnProperty('sayHello')}`); // Inspeccionar el prototipo de fujitora
+
+console.log('___');
+/* Inspeccionamos el objeto y podemos ver que el método sayHello este en __proto__ */
+
+console.log(fujitora); // Inspeccionar el prototipo del Hero
+
+console.log('___');
+/* Inspeccionamos Hero.prototype y el proto de fujitora */
+
+console.log('Hero Prototype: ', Hero.prototype);
+console.log('fujitora.__proto__: ', fujitora.__proto__); // Comparar prototipes
+
+console.log('___');
+/* obtenemos el proto de fujitora y lo guardamos en la constante */
+
+const prototyeOfZelda = Object.getPrototypeOf(fujitora); // mejor forma de obtener fujitora.__proto__
+
+/* Comparamos Hero.prototype y el proto de fujitora y resultan ser totalmente identicos, es más son el            mismo!!  */
+
+console.log('Hero.prototype === fujitora.__proto__:', prototyeOfZelda === Hero.prototype); // Buscando atributos y metodos de fujitora
+
+console.log('___');
+/* Añadimos el método fight a Hero */
+
+Hero.prototype.fight = function () {
+  console.log('FIGHT!');
+};
+/* fujitora puede ejecturar el método fight */
+
+
+fujitora.fight();
+/* pero fujitora no tinene el método fight */
+
+console.log(`fujitora.hasOwnProperty('fight'): ${fujitora.hasOwnProperty('fight')}`);
+/* el que lo tiene es el prototype de Hero que esta en el proto de fujitora */
+
+console.log(`Hero.prototype.hasOwnProperty('fight'): ${Hero.prototype.hasOwnProperty('fight')}`);
+/* fujitora puede ejecturar toString */
+
+console.log(fujitora.toString());
+/* pero fujitora no tinene toString */
+
+console.log(`fujitora.hasOwnProperty('toString'): ${fujitora.hasOwnProperty('toString')}`);
+/* y el prototype de Hero (que es el proto de fujitora) tampoco tiene toString */
+
+console.log(`Hero.prototype.hasOwnProperty('toString'): ${Hero.prototype.hasOwnProperty('toString')}`);
+/* entonces quien lo tiene? */
+// Buscando atributos y metodos de Hero
+
+console.log('___');
+/* obtenemos el proto del  prototype de Hero y lo guardamos en la constante */
+
+const prototyeOfPrototyeOfZelda = Object.getPrototypeOf(Hero.prototype);
+/* el que lo tiene es Object */
+
+/* Object es el proto del prototype Hero que lo obtuvimos asi -> Object.getPrototypeOf(Hero.prototype) */
+
+/* y es Object quien tiene el método toString */
+
+console.log(`prototyeOfPrototyeOfZelda.hasOwnProperty('toString'): ${prototyeOfPrototyeOfZelda.hasOwnProperty('toString')}`); // Inspeccionar el prototipo del Object
+
+console.log('___');
+/* Este es Object (quien es el proto del prototype de Hero) */
+
+console.log(Object);
+/* Y todos sus métodos estan en su prototype */
+
+console.log(Object.prototype);
+/* por lo que podemos decir que el proto del prototype de Hero es el mismo que el prototype de Object */
+
+console.log('Object.prototype === Hero.prototype.__proto__:', Object.prototype === prototyeOfPrototyeOfZelda);
+/* Object es la raiz de todo, y este no tiene un proto */
+
+/* si intentamos buscar el proto del prototype de Object */
+
+const prototyeOfObject = Object.getPrototypeOf(Object.prototype);
+/* Lo inspeccionamos */
+
+console.log(prototyeOfObject);
+/* Al Object no tener un proto, devolvera null o undefined */
+
+/* Como conclución, si fujitora no tiene un método, lo buscara en su proto(quien es el prototype de Hero) y si este no lo tiene lo buscara en su proto de su proto (quien el proto del prototype de Hero que tambien es el prototype de Object) y si este no lo tiene y ya que el prototype de Object no tener un proto la busqueda terminara ahi y nos dira que no es una función, y si lo inspeccionamos nos devolvera undefined */
+// fujitora.getFriends()
+
+console.log(fujitora.getFriends);</script>
+</body>
+</html>

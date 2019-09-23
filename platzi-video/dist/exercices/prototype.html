@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Prototype</title>
+  <style>body {
+      font-size: 24px;
+    }</style>
+</head>
+<body>
+    <a href="/exercices\index.html">Go Back!</a>
+    <p><em>Abre la consola</em></p>
+
+    <script>// Un objeto común y corriente
+const zelda = {
+  name: 'Zelda'
+  /* creamos el metodo sayHello del objeto celda */
+
+};
+
+zelda.sayHello = function () {
+  console.log(`Hola soy ${this.name}`);
+};
+/* Se ejecuta normalmente */
+
+
+zelda.sayHello(); // Otro objeto más
+
+const link = {
+  name: 'Zelda'
+};
+
+link.sayHello = function () {
+  console.log(`Hola soy ${this.name}`);
+};
+/* Obtenemos lo que queriamos pero estamos volviendo a escribir el método */
+
+
+link.sayHello(); // Seamos un poco más eficientes
+
+/* Creamos un función Hero (que actua como una "clase") la cual recibe name */
+
+function Hero(name) {
+  /* y la guarda en el objeto hero */
+  const hero = {
+    // es lo mismo que name: name
+    name
+    /* y en la misma "clase" generamos el método sayHello para el objeto hero */
+
+  };
+
+  hero.sayHello = function () {
+    console.log(`Hola soy ${this.name} y soy un mugiwara`);
+  };
+  /* y retornamos hero el cual ya tiene sus atributos y métodos */
+
+
+  return hero;
+}
+/* Ahora solo instanciamos los objetos pasandole el parametro name */
+
+
+const zoro = Hero('zoro');
+const luffy = Hero('luffy');
+/* y estos ya tienen le Método sayHello */
+
+zoro.sayHello();
+luffy.sayHello(); // Aun podemos mejorar más y evitar tener que crear la misma función cada vez
+
+/* Creamos la constante que sera un objeto que tiene el método sayHello */
+
+const heroMethods = {
+  sayHello: function () {
+    console.log(`Hola soy ${this.name} y soy un comandante de los piratas de shirohige`);
+  }
+  /* Creamos otra función ("clase") que sera similar a la primera */
+
+};
+
+function HeroTwo(name) {
+  const hero = {
+    name
+    /* Pero en este caso obtenemos el método del objeto anteriormente creado */
+
+  };
+  hero.sayHello = heroMethods.sayHello;
+  return hero;
+}
+/* Instanciamos los objetos pasandole el parametro name */
+
+
+const marco = HeroTwo('marco');
+const ace = HeroTwo('ace');
+/* y estos siguen podiendo ejecutar el método sayHello */
+
+marco.sayHello();
+ace.sayHello(); // Object.create -> const newObject = Object.create(object)
+
+/* Creamos un segundo objeto con el método sayHello peró con el texto cambiado para identificarlo */
+
+const heroMethodsTwo = {
+  sayHello: function () {
+    console.log(`Hola soy ${this.name} y soy un shichibukai`);
+  }
+  /* Creamos una tercera función ("clase") que tendra variaciones más notables */
+
+};
+
+function HeroThree(name) {
+  /* Pero ahora ya no crearemos el objeto de manera diferente, usando Object.Create al cual le pasaremos el objeto con el metodo sayHello */
+
+  /* Esto tiene una cuantas diferencias con las formas anteriores que haciamos esto. */
+
+  /* Y es que ahora el método sayHello ya no estara explicitamente en el objeto que sea instanciado si no en su proto, y a esto se le conoce como herencia prototipal */
+  const hero = Object.create(heroMethodsTwo);
+  /* Y tambien tenemos que recuperar el atributo name */
+
+  hero.name = name;
+  return hero;
+}
+/* Instanciamos los objetos pasandole el parametro name */
+
+
+const mihawk = HeroThree('mihawk');
+const buggy = HeroThree('buggy');
+/* y estos aun pueden ejecutar el método sayHello aunque ya no este explicitamente en ellos */
+
+buggy.sayHello();
+mihawk.sayHello();
+/* con esto podemos ver que marco tiene tanto name como sayHello, pero buggy solo name y sayHello esta en su proto que se heredo del herMethodsTwo gracias a Objet.create */
+
+console.log(marco);
+console.log(buggy); // Los métodos de hero dentro de Hero
+
+/* Creamos una cuarta función ("clase") que sera similar a la anterior */
+
+function HeroFour(name) {
+  /* Pero en este caso ya no crearemos el objeto a partir del objeto con el método */
+
+  /* Sino de la misma clase que ahora tiene un prototype que es el método sayHello */
+  const hero = Object.create(HeroFour.prototype);
+  hero.name = name;
+  return hero;
+}
+/* Agregamos el prototype a la clase  */
+
+
+HeroFour.prototype.sayHello = function () {
+  console.log(`Hola soy ${this.name} y soy un yonkou`);
+};
+/* Instanciamos los objetos pasandole el parametro name */
+
+
+const shanks = HeroFour('shanks');
+const kaido = HeroFour('kaido');
+/* y estos siguen podiendo ejecutar el método sayHello */
+
+shanks.sayHello();
+kaido.sayHello(); // new es un atajo (azucar sintactica) para llevar hero.prototype al objecto
+
+/* Creamos una cuarta función ("clase") que sera similar a la anterior */
+
+function HeroFive(name) {
+  /* Al momento de instanciar los objetos con new, los 2 codígos cometandos suceden implicitamente */
+  // this = Object.create(HeroFive.prototype)
+
+  /* Ahora se puede acceder a this que se refiere a la misma clase */
+  this.name = name; // return this
+}
+
+HeroFive.prototype.sayHello = function () {
+  console.log(`Hola soy ${this.name} y soy un Marine`);
+};
+/* Instanciamos los objetos con NEW pasandole el parametro name */
+
+
+const fujitora = new HeroFive('fujitora');
+const garp = new HeroFive('garp');
+/* y estos pueden ejecutar el método sayHello */
+
+fujitora.sayHello();
+garp.sayHello();</script>
+</body>
+</html>

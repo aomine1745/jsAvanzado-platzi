@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>This</title>
+  <style>body {
+      font-size: 24px;
+    }
+    .call-to-action {
+      margin-top: 24px;
+    }</style>
+</head>
+<body>
+    <a href="/exercices\index.html">Go Back!</a>
+    <p><em>Abre la consola</em></p>
+
+    <ul>
+      <li><button class="call-to-action">Aprender</button></li>
+      <li><button class="call-to-action">Aprender Más</button></li>
+      <li><button class="call-to-action">¡Nunca pares de aprender!</button></li>
+    </ul>
+
+    <script>// Establecer `this` usando `call(this)`
+function sayHello() {
+  console.log(`Hola soy ${this.name} ${this.surname}`);
+}
+
+const aomine = {
+  name: 'aomine',
+  surname: 'Daiki'
+};
+const akashi = {
+  name: 'akashi',
+  surname: 'Seijuro'
+  /* Invocamos la función usando call y le pasamos quien sera su this */
+
+};
+sayHello.call(aomine); // Establecer `this` usando `call` y pasar argumentos a la función
+
+function walk(metros, direccion) {
+  console.log(`${this.name} camina ${metros} metros hacia el ${direccion}`);
+}
+/* Invocamos la función usando call y le pasamos quien sera su this y sus parametros separados por comas */
+
+
+walk.call(aomine, 15, 'sur'); // Establecer `this` usando `apply` y pasar argumentos a la función
+
+const values = [220, 'norte'];
+/* Invocamos la función usando call y le pasamos quien sera su this y sus parametros que tienen que ser un        array */
+
+walk.apply(akashi, values);
+/* 
+  C all - comas
+  A rray - Array
+*/
+// Establecer `this` en una nueva función usando `bind`
+
+/* Bindeamos la función al objeto akashi quien ahora sera su this */
+
+const akashiSayHello = sayHello.bind(akashi);
+akashiSayHello();
+const akashiWalk = walk.bind(akashi);
+/* y pasamos sus parametros separados por comas */
+
+akashiWalk(450, 'este');
+/* Tambien podemos hardcodeamos sus parametros */
+
+const akashiWalkTwo = walk.bind(akashi, 2120, 'sur');
+akashiWalkTwo();
+/* Tambien podemos hardcodear solo uno de sus parametros y pasar el otro de forma dinamica */
+
+const akashiWalkThree = walk.bind(akashi, 532);
+akashiWalkThree('norte'); // Cuando es útil usar uno de estos métodos
+
+const buttons = document.getElementsByClassName('call-to-action');
+/* Al usar getElementsByClassName este nos devolvera un nodelist similar a un objeto el cual no tiene el          método forEach */
+
+/* buttons.forEach(button => {
+  button.onclick = () => { alert(button.innerHTML) }
+}) */
+
+/* Genera un error en consola */
+// Nodelist
+
+/* Podemos acceder directamente al metodo forEach del Objeto Array para poder iterar en un objeto */
+
+Array.prototype.forEach.call(buttons, button => {
+  button.onclick = () => alert(button.innerHTML);
+});</script>
+</body>
+</html>
