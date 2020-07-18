@@ -15,7 +15,7 @@
   - [Mejores prácticas](#mejores-prácticas)
   - [Ética](#Ética)
   - [Experiencia](#Experiencia)
--[Como llega un script al navegador](#como-llega-un-script-al-navegador)
+- [Como llega un script al navegador](#como-llega-un-script-al-navegador)
   - [DOM](#DOM)
   - [Scripts](#scripts)
   - [Scripts embebidos](#scripts-embebidos)
@@ -78,12 +78,12 @@
 * Está en ti
 * Perseverancia
 
-<div align="center">
-  <img src="./md/Infografia.jpg" alt="infografia">
-</div>
-
 <div align="right">
   <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
+
+<div align="center">
+  <img src="./md/Infografia.jpg" alt="infografia">
 </div>
 
 ## Como llega un script al navegador
@@ -92,13 +92,13 @@
 
 Es la representación de un archivo HTML en un objeto
 
-<div align="center" style="padding: 8px 0">
+<div align="center" style="padding: 80px 0">
   <img src="./md/dom.jpg" alt="infografia" max-width="700px">
 </div>
 
 Cuando el navegador recibe HTML, recibe todo esto y lo procesa, convirtiendola a una estructura de arbol
 
-<div align="center" style="padding: 8px 0">
+<div align="center" style="padding: 80px 0">
   <img src="./md/arbol.jpg" alt="arbol" max-width="700px">
 </div>
 
@@ -218,7 +218,7 @@ Tambien podriamos decir que son una combinación del scope de una función y la 
 
 **Ejemplo**
 
-Generamos una función que retorna otra función con lo cual la variable __colorMessage__ no podra ser accedida ni modificada
+Generamos una función que retorna otra función con lo cual la variable _colorMessage_ no podra ser accedida ni modificada
 
 ```javascript
 function makeColorPrinter(color) {
@@ -230,16 +230,20 @@ function makeColorPrinter(color) {
 }
 ```
 
-Instanciamos la variable __greenColorPrinter__ usando nuestro closure
+Instanciamos la variable _greenColorPrinter_ usando nuestro closure
 
 ```javascript
 let greenColorPrinter = makeColorPrinter('green')
 greenColorPrinter() // The color is green
 ```
 
-Ahora la variable __greenColorPrinter__ se convirtio en una función que recuerda el valor inicial
+Ahora la variable _greenColorPrinter_ se convirtio en una función que recuerda el valor inicial
 
 Los closures nos sirven para tener algo parecido a variables privadas, característica que no tiene JavaScript por default. Es decir encapsulan variables que no pueden ser modificadas directamente por otros objetos, sólo por funciones pertenecientes al mismo
+
+<div align="right">
+  <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
 
 ### IIFE
 Inmediately invoked function expressions
