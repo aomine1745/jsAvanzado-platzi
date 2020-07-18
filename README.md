@@ -1,8 +1,8 @@
 # JS Profesional - Platzi
-Ser un profesional es un duro camino lleno de experiencias
 
 <div align="center">
   <img src="./md/js.png" alt="js logo" height="200px">
+  <h2 align="center">Ser un profesional es un duro camino lleno de experiencias</h2>
 </div>
 
 ## Index
@@ -12,9 +12,21 @@ Ser un profesional es un duro camino lleno de experiencias
   - [Como funciona](#como-funciona)
   - [Entornos de programación](#entornos-de-programación)
   - [Versado en código](#versado-en-código)
-  - [Mejores Practicas](#mejores-practicas)
+  - [Mejores prácticas](#mejores-prácticas)
   - [Ética](#Ética)
   - [Experiencia](#Experiencia)
+-[Como llega un script al navegador](#como-llega-un-script-al-navegador)
+  - [DOM](#DOM)
+  - [Scripts](#scripts)
+  - [Scripts embebidos](#scripts-embebidos)
+  - [Scripts externos](#scripts-externos)
+- [Scope](#Scope)
+  - [Global scope](#global-scope)
+  - [Function scope](#function-scope)
+  - [Block scope](#block-scope)
+  - [Module scope](#module-scope)
+- [Closures](#closures)
+  - [IIFE](#iife)
 
 ## ¿Qué forma a un profesional?
 * Conocimiento del lenguaje
@@ -25,18 +37,10 @@ Ser un profesional es un duro camino lleno de experiencias
 * Ética / Profesionalismo
 * Experiencia
 
-<div align="right">
-  <small><a href="#index">🡡 volver al inicio</a></small>
-</div>
-
 ### El lenguaje JavaScript
 * Fundamentos
 * No fundamentos
 * Cómo funciona
-
-<div align="right">
-  <small><a href="#index">🡡 volver al inicio</a></small>
-</div>
 
 ### No fundamentos
 * Promesas (Nivel Pro)
@@ -44,52 +48,29 @@ Ser un profesional es un duro camino lleno de experiencias
 * Proxies
 * Generadores
 
-<div align="right">
-  <small><a href="#index">🡡 volver al inicio</a></small>
-</div>
-
 ### Como funciona
 * Javascript Engine
 * Herencia prototipal
 * Event Loop
 
-<div align="right">
-  <small><a href="#index">🡡 volver al inicio</a></small>
-</div>
-
 ### Entornos de programación
-* Browse y el DOM Api
-
-<div align="right">
-  <small><a href="#index">🡡 volver al inicio</a></small>
-</div>
+* Browser
+* DOM Api
 
 ### Versado en código
 * Hay que leer código
 * Mucho
 * Constantemente
 
-<div align="right">
-  <small><a href="#index">🡡 volver al inicio</a></small>
-</div>
-
-### Mejores Practicas
+### Mejores prácticas
 * No reinventamos la rueda
 * Probamos nuestro código
-
-<div align="right">
-  <small><a href="#index">🡡 volver al inicio</a></small>
-</div>
 
 ### Ética
 * Ser responsable
 * Entregar a tiempo
 * Saber decir que no
 * No hacer daño
-
-<div align="right">
-  <small><a href="#index">🡡 volver al inicio</a></small>
-</div>
 
 ### Experiencia
 * Nada le gana a esto
@@ -106,54 +87,185 @@ Ser un profesional es un duro camino lleno de experiencias
 </div>
 
 ## Como llega un script al navegador
+
 ### DOM
-Representacion de un archivo `<addr>` HTML en un objeto
-<div align="center">
+
+Es la representación de un archivo HTML en un objeto
+
+<div align="center" style="padding: 8px 0">
   <img src="./md/dom.jpg" alt="infografia" max-width="700px">
 </div>
 
 Cuando el navegador recibe HTML, recibe todo esto y lo procesa, convirtiendola a una estructura de arbol
 
-<div align="center">
+<div align="center" style="padding: 8px 0">
   <img src="./md/arbol.jpg" alt="arbol" max-width="700px">
 </div>
 
-Cuando termina de procesarlo es que ocurre **DOMContentLoaded**
-### Scripts externos o embebido
-![Script](./md/script1.jpg)
+Cuando termina de procesarlo es que ocurre el evento **DOMContentLoaded**
 
-Cuando el DOM se este procesando va a detener todo el procesamiento
-![Script](./md/script2.jpg)
+<div align="right">
+  <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
+
+### Scripts
+
+Script es una etiqueta como cualquier otra, es un elemento
+
+Pero no todos los scripts son iguales
+
+Veamos este ejemplo, tenemos un script con el atributo async y que como source trae google analitycs y otro script embebido tiene 4 lineas
+
+<div align="center" style="padding: 8px 0">
+  <img src="./md/script1.jpg" alt="script" max-width="700px">
+</div>
+
+<div align="right">
+  <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
+
+
+### Scripts embebidos 
+
+Cuando el DOM se este procesando y se encuentre con una etiqueta script va a detener todo el procesamiento
+hasta que esta termine su ejecución
+
+<div align="center" style="padding: 8px 0">
+  <img src="./md/script2.jpg" alt="script" max-width="700px">
+</div>
 
 Donde ponemos los scripts son importantes
-![Script](./md/script3.jpg)
+
+Consideremos este ejemplo
+
+<div align="center" style="padding: 8px 0">
+  <img src="./md/script3.jpg" alt="script" max-width="700px">
+</div>
 
 Si corremos este codigo... PAMP
 
-![Script](./md/script4.jpg)
+<div align="center" style="padding: 8px 0">
+  <img src="./md/script4.jpg" alt="script" max-width="700px">
+</div>
 
-Dijimos que el procesamiento de HTML se detiene y al ejecutarse el script la etiqueta form no existe por lo que genera un TyperError.
+Dijimos que el procesamiento de HTML se detiene y al ejecutarse el script la etiqueta form no existe por lo que genera un TyperError
+
 Solucion poner el form antes del script
-![Script](./md/script5.jpg)
 
-### Scripts Externos
+<div align="center" style="padding: 8px 0">
+  <img src="./md/script5.jpg" alt="script" max-width="700px">
+</div>
+
+<div align="right">
+  <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
+
+### Scripts externos
 Sucede lo mimo cuando se hace un fetching de datos, el DOM se detiene cuando llega al script y no es hasta que se cumpla que el HTMl se seguira procesando
-![Script](./md/script6.jpg)
+
+<div align="center" style="padding: 8px 0">
+  <img src="./md/script6.jpg" alt="script" max-width="700px">
+</div>
 
 Ahora se le puede dar un atributo async a los fetching externos, con esto la peticion va a ocurrir asyncronamente sin interrumpir el proceso del DOM, so se detendra cuando se cumpla y se ejecute el script
-![Script](./md/script7.jpg)
+
+<div align="center" style="padding: 8px 0">
+  <img src="./md/script7.jpg" alt="script" max-width="700px">
+</div>
 
 ¿Qué pasa si yo tengo 2 scripts asincronos?
-![Script](./md/script8.jpg)
+
+<div align="center" style="padding: 8px 0">
+  <img src="./md/script8.jpg" alt="script" max-width="700px">
+</div>
 
 Tenemos una 3ra forma para traer archivos externos - defer,
-Similar al async, el fetching de datos no dentendra el proceso del DOM pero la ejecución ocurrira al final.
-![Script](./md/script9.jpg)
+Similar al async, el fetching de datos no dentendra el proceso del DOM pero la ejecución ocurrira al final
 
-## Scoped
-EL scoped o ambito de una variable representa el tiempo de vida en el que esta existe.
-## Closuers
-Combinación del scope de una function y la funcion donde fue definida.
+<div align="center" style="padding: 8px 0">
+  <img src="./md/script9.jpg" alt="script" max-width="700px">
+</div>
+
+<div align="right">
+  <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
+
+## Scope
+Por desgracia JavaScript no siempre a tenido el mejor sistema de scope de variables
+
+El Scope o ámbito es lo que define el tiempo de vida de una variable, en que partes de nuestro código pueden ser usadas
+
+### Global scope
+Variables disponibles de forma global se usa la palabra var, son accesibles por todos los scripts que se cargan en la página. Aquí hay mucho riesgo de sobreescritura
+
+### Function scope
+Variables declaradas dentro de una función sólo visibles dentro de ella misma (incluyendo los argumentos que se pasan a la función)
+
+### Block scope
+Variables definidas dentro de un bloque, por ejemplo variables declaradas dentro un loop while o for Se usa let y const para declarar este tipo de variables
+
+### Module scope
+Cuando se denota un script de tipo module con el atributo type="module las variables son limitadas al archivo en el que están declaradas
+
+<div align="right">
+  <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
+
+## Closures
+Son funciones que regresan una función o un objeto con funciones que mantienen las variables que fueron declaradas fuera de su scope
+
+Tambien podriamos decir que son una combinación del scope de una función y la función donde fue definida
+
+**Ejemplo**
+
+Generamos una función que retorna otra función con lo cual la variable __colorMessage__ no podra ser accedida ni modificada
+
+```javascript
+function makeColorPrinter(color) {
+  let colorMessage = `The color is ${color}`
+
+  return function () {
+    console.log(colorMessage)
+  }
+}
+```
+
+Instanciamos la variable __greenColorPrinter__ usando nuestro closure
+
+```javascript
+let greenColorPrinter = makeColorPrinter('green')
+greenColorPrinter() // The color is green
+```
+
+Ahora la variable __greenColorPrinter__ se convirtio en una función que recuerda el valor inicial
+
+Los closures nos sirven para tener algo parecido a variables privadas, característica que no tiene JavaScript por default. Es decir encapsulan variables que no pueden ser modificadas directamente por otros objetos, sólo por funciones pertenecientes al mismo
+
+### IIFE
+Inmediately invoked function expressions
+
+Invocamos la función inmediatamente y todo lo que tenga dentro no podra ser accedido ni modificado por el scope global
+
+```javascript
+(function() {
+  var color = 'green'
+
+  function printColor() {
+    console.log(color)
+  }
+
+  printColor()
+})()
+```
+
+Una de las razones para usarlas es para mantener la privavidad de los datos
+
+Pero actualmente y gracias a ES6 ya no es necesario recurrir a este metodo ya que ahora tenemos la posibilidad de manejar el scope de bloque gracias a let y const
+
+<div align="right">
+  <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
+
 ## this
 this se refiere a un objeto. Ese objeto es el que actualmente está ejecutando un pedazo de código
 ### Metodos
