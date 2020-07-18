@@ -92,17 +92,17 @@
 
 Es la representación de un archivo HTML en un objeto
 
-<div align="center" style="padding: 80px 0">
+<div align="center">
   <img src="./md/dom.jpg" alt="infografia" max-width="700px">
 </div>
 
 Cuando el navegador recibe HTML, recibe todo esto y lo procesa, convirtiendola a una estructura de arbol
 
-<div align="center" style="padding: 80px 0">
+<div align="center">
   <img src="./md/arbol.jpg" alt="arbol" max-width="700px">
 </div>
 
-Cuando termina de procesarlo es que ocurre el evento **DOMContentLoaded**
+Cuando termina de procesarlo es que ocurre el evento **_DOMContentLoaded_**
 
 <div align="right">
   <small><a href="#index">🡡 volver al inicio</a></small>
@@ -116,7 +116,7 @@ Pero no todos los scripts son iguales
 
 Veamos este ejemplo, tenemos un script con el atributo async y que como source trae google analitycs y otro script embebido tiene 4 lineas
 
-<div align="center" style="padding: 8px 0">
+<div align="center">
   <img src="./md/script1.jpg" alt="script" max-width="700px">
 </div>
 
@@ -130,7 +130,7 @@ Veamos este ejemplo, tenemos un script con el atributo async y que como source t
 Cuando el DOM se este procesando y se encuentre con una etiqueta script va a detener todo el procesamiento
 hasta que esta termine su ejecución
 
-<div align="center" style="padding: 8px 0">
+<div align="center">
   <img src="./md/script2.jpg" alt="script" max-width="700px">
 </div>
 
@@ -138,13 +138,13 @@ Donde ponemos los scripts son importantes
 
 Consideremos este ejemplo
 
-<div align="center" style="padding: 8px 0">
+<div align="center">
   <img src="./md/script3.jpg" alt="script" max-width="700px">
 </div>
 
 Si corremos este codigo... PAMP
 
-<div align="center" style="padding: 8px 0">
+<div align="center">
   <img src="./md/script4.jpg" alt="script" max-width="700px">
 </div>
 
@@ -152,7 +152,7 @@ Dijimos que el procesamiento de HTML se detiene y al ejecutarse el script la eti
 
 Solucion poner el form antes del script
 
-<div align="center" style="padding: 8px 0">
+<div align="center">
   <img src="./md/script5.jpg" alt="script" max-width="700px">
 </div>
 
@@ -163,26 +163,26 @@ Solucion poner el form antes del script
 ### Scripts externos
 Sucede lo mimo cuando se hace un fetching de datos, el DOM se detiene cuando llega al script y no es hasta que se cumpla que el HTMl se seguira procesando
 
-<div align="center" style="padding: 8px 0">
+<div align="center">
   <img src="./md/script6.jpg" alt="script" max-width="700px">
 </div>
 
 Ahora se le puede dar un atributo async a los fetching externos, con esto la peticion va a ocurrir asyncronamente sin interrumpir el proceso del DOM, so se detendra cuando se cumpla y se ejecute el script
 
-<div align="center" style="padding: 8px 0">
+<div align="center">
   <img src="./md/script7.jpg" alt="script" max-width="700px">
 </div>
 
 ¿Qué pasa si yo tengo 2 scripts asincronos?
 
-<div align="center" style="padding: 8px 0">
+<div align="center">
   <img src="./md/script8.jpg" alt="script" max-width="700px">
 </div>
 
 Tenemos una 3ra forma para traer archivos externos - defer,
 Similar al async, el fetching de datos no dentendra el proceso del DOM pero la ejecución ocurrira al final
 
-<div align="center" style="padding: 8px 0">
+<div align="center">
   <img src="./md/script9.jpg" alt="script" max-width="700px">
 </div>
 
@@ -218,7 +218,7 @@ Tambien podriamos decir que son una combinación del scope de una función y la 
 
 **Ejemplo**
 
-Generamos una función que retorna otra función con lo cual la variable _colorMessage_ no podra ser accedida ni modificada
+Generamos una función que retorna otra función con lo cual la variable **_colorMessage_** no podra ser accedida ni modificada
 
 ```javascript
 function makeColorPrinter(color) {
@@ -230,14 +230,14 @@ function makeColorPrinter(color) {
 }
 ```
 
-Instanciamos la variable _greenColorPrinter_ usando nuestro closure
+Instanciamos la variable **_greenColorPrinter_** usando nuestro closure
 
 ```javascript
 let greenColorPrinter = makeColorPrinter('green')
 greenColorPrinter() // The color is green
 ```
 
-Ahora la variable _greenColorPrinter_ se convirtio en una función que recuerda el valor inicial
+Ahora la variable **_greenColorPrinter_** se convirtio en una función que recuerda el valor inicial
 
 Los closures nos sirven para tener algo parecido a variables privadas, característica que no tiene JavaScript por default. Es decir encapsulan variables que no pueden ser modificadas directamente por otros objetos, sólo por funciones pertenecientes al mismo
 
