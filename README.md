@@ -1,5 +1,21 @@
-# JS Avanzado - Platzi
+# JS Profesional - Platzi
 Ser un profesional es un duro camino lleno de experiencias
+
+<div align="center">
+  <img src="./md/js.png" alt="js logo" height="200px">
+</div>
+
+## Index
+- [¿Qué forma a un profesional?](#qué-forma-a-un-profesional)
+  - [El lenguaje JavaScript](#el-lenguaje-javaScript)
+  - [No fundamentos](#no-fundamentos)
+  - [Como funciona](#como-funciona)
+  - [Entornos de programación](#entornos-de-programación)
+  - [Versado en código](#versado-en-código)
+  - [Mejores Practicas](#mejores-practicas)
+  - [Ética](#Ética)
+  - [Experiencia](#Experiencia)
+
 ## ¿Qué forma a un profesional?
 * Conocimiento del lenguaje
 * Conocimiento de los entornos de programación
@@ -8,46 +24,99 @@ Ser un profesional es un duro camino lleno de experiencias
 * Herramientas
 * Ética / Profesionalismo
 * Experiencia
-## El lenguaje - JavaScript
+
+<div align="right">
+  <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
+
+### El lenguaje JavaScript
 * Fundamentos
 * No fundamentos
 * Cómo funciona
-## No fundamentos
+
+<div align="right">
+  <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
+
+### No fundamentos
 * Promesas (Nivel Pro)
 * Getters, Setters
 * Proxies
 * Generadores
-## Como funciona
+
+<div align="right">
+  <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
+
+### Como funciona
 * Javascript Engine
 * Herencia prototipal
 * Event Loop
-## Entornos de programación
+
+<div align="right">
+  <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
+
+### Entornos de programación
 * Browse y el DOM Api
-## Versado en código
+
+<div align="right">
+  <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
+
+### Versado en código
 * Hay que leer código
 * Mucho
 * Constantemente
-## Mejores Practicas
+
+<div align="right">
+  <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
+
+### Mejores Practicas
 * No reinventamos la rueda
 * Probamos nuestro código
-## Ética
+
+<div align="right">
+  <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
+
+### Ética
 * Ser responsable
 * Entregar a tiempo
 * Saber decir que no
 * No hacer daño
-## Experiencia
+
+<div align="right">
+  <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
+
+### Experiencia
 * Nada le gana a esto
 * No se puede enseñar
 * Está en ti
 * Perseverancia
-![infografia](./md/Infografia.jpg)
+
+<div align="center">
+  <img src="./md/Infografia.jpg" alt="infografia">
+</div>
+
+<div align="right">
+  <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
+
 ## Como llega un script al navegador
 ### DOM
 Representacion de un archivo `<addr>` HTML en un objeto
-![DOM](./md/dom.jpg)
+<div align="center">
+  <img src="./md/dom.jpg" alt="infografia" max-width="700px">
+</div>
 
 Cuando el navegador recibe HTML, recibe todo esto y lo procesa, convirtiendola a una estructura de arbol
-![Arbol](./md/arbol.jpg)
+
+<div align="center">
+  <img src="./md/arbol.jpg" alt="arbol" max-width="700px">
+</div>
 
 Cuando termina de procesarlo es que ocurre **DOMContentLoaded**
 ### Scripts externos o embebido
