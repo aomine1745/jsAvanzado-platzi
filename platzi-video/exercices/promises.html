@@ -82,66 +82,68 @@
       //   console.log(error)
       // }
 
-        const popularMovies = await getPopularMovies()
-        const ids = popularMovies.slice(0, n).map(movie => movie.id)
-        return ids
+      const popularMovies = await getPopularMovies()
+      const ids = popularMovies.slice(0, n).map(movie => movie.id)
+      return ids
     }
 
-      async function getTopMoviesInSequence() {
-        const ids = await getTopMoviesIds()
-        const movies = []
+    async function getTopMoviesInSequence() {
+      const ids = await getTopMoviesIds()
+      const movies = []
 
-        for (const id of ids) {
-          const movie = await getMovie(id)
-          movies.push(movie)
-        }
-
-        return movies
+      for (const id of ids) {
+        const movie = await getMovie(id)
+        movies.push(movie)
       }
 
-      async function getTopMoviesInParallel() {
-        const ids = await getTopMoviesIds()
-        const moviePromises = await ids.map(id => getMovie(id))
-        const movies = await Promise.all(moviePromises)
-        return movies
-      }
+      return movies
+    }
 
-      async function getFastestTopMovie() {
-          const ids = await getTopMoviesIds()
-          const moviePromises = await ids.map(id => getMovie(id))
+    async function getTopMoviesInParallel() {
+      const ids = await getTopMoviesIds()
+      const moviePromises = await ids.map(id => getMovie(id))
 
-          const movie = await Promise.race(moviePromises)
+      const movies = await Promise.all(moviePromises)
 
-          return movie
-      }
+      return movies
+    }
 
-      document.getElementById('sequence').onclick = async function() {
-        const movies = await getTopMoviesInSequence();
-        renderMovies(movies);
-      };
-      document.getElementById('parallel').onclick = async function() {
-        const movies = await getTopMoviesInParallel();
-        renderMovies(movies);
-      };
-      document.getElementById('fastest').onclick = async function() {
-        const movie = await getFastestTopMovie();
-        renderMovies([movie]);
-      };
+    async function getFastestTopMovie() {
+      const ids = await getTopMoviesIds()
+      const moviePromises = await ids.map(id => getMovie(id))
 
-      function renderMovies(movies) {
-        const movieList = document.getElementById('movies')
-        movieList.innerHTML = ''
+      const movie = await Promise.race(moviePromises)
 
-        movies.forEach(movie => {
-          const listItem = document.createElement('li')
-          listItem.innerHTML = `
-            <li><img src="https://image.tmdb.org/t/p/w342${movie.poster_path}" />
-            <h5>${movie.title}</h5>
-            <p>Released on <em>${movie.release_date}</em></p></li>
-            `
-          movieList.append(listItem)
-        })
-      }
+      return movie
+    }
+
+    document.getElementById('sequence').onclick = async function() {
+      const movies = await getTopMoviesInSequence();
+      renderMovies(movies);
+    };
+    document.getElementById('parallel').onclick = async function() {
+      const movies = await getTopMoviesInParallel();
+      renderMovies(movies);
+    };
+    document.getElementById('fastest').onclick = async function() {
+      const movie = await getFastestTopMovie();
+      renderMovies([movie]);
+    };
+
+    function renderMovies (movies) {
+      const movieList = document.getElementById('movies')
+      movieList.innerHTML = ''
+
+      movies.forEach(movie => {
+        const listItem = document.createElement('li')
+        listItem.innerHTML = `
+          <li><img src="https://image.tmdb.org/t/p/w342${movie.poster_path}" />
+          <h5>${movie.title}</h5>
+          <p>Released on <em>${movie.release_date}</em></p></li>
+          `
+        movieList.append(listItem)
+      })
+    }
   </script>
 </body>
 </html>

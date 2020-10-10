@@ -35,11 +35,17 @@
 
     /* Generamos una función que retorna otra función con lo cual la variable "colorMessage" no podra ser accedida ni modificada */
     function makeColorPrinter(color) {
+      var xd = 'test'
       let colorMessage = `The color is ${color}`
 
       return function () {
         console.log(colorMessage)
       }
+    }
+
+    function y () {
+      var x = 'tesasdasdasd' 
+      console.log(x)
     }
 
     /* ahora la variable "greenColorPrinter" se convirtio en una función que recuerda el valor inicial */
