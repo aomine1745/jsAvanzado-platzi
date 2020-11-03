@@ -176,7 +176,7 @@ El DOM se estara procesando hastsa que se encuentre con una etiqueta __script__,
 
 Ahora tenemos que considerar en donde __colocamos__ nuestras etiquetas script ya que su __posición__ es importante, consideremos este ejemplo.
 
-<div align="center">
+<div>
   <img src="./md/script3.jpg" alt="script" max-width="700px">
 </div>
 
