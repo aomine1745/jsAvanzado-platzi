@@ -13,13 +13,14 @@
   - [Entornos de programación](#entornos-de-programación)
   - [Versado en código](#versado-en-código)
   - [Mejores prácticas](#mejores-prácticas)
-  - [Ética](#Ética)
-  - [Experiencia](#Experiencia)
+  - [Ética](#ética)
+  - [Experiencia](#experiencia)
+  - [Infografía](#infografia)
 - [Como llega un script al navegador](#como-llega-un-script-al-navegador)
   - [DOM](#DOM)
-  - [Scripts](#scripts)
-  - [Scripts embebidos](#scripts-embebidos)
-  - [Scripts externos](#scripts-externos)
+  - [Script](#script)
+  - [Script embebido](#script-embebido)
+  - [Script externo](#script-externo)
 - [Scope](#Scope)
   - [Global scope](#global-scope)
   - [Function scope](#function-scope)
@@ -37,10 +38,18 @@
 * Ética / Profesionalismo
 * Experiencia
 
+<div align="right">
+  <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
+
 ### El lenguaje JavaScript
 * Fundamentos
 * No fundamentos
 * Cómo funciona
+
+<div align="right">
+  <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
 
 ### No fundamentos
 * Promesas (Nivel Pro)
@@ -48,23 +57,43 @@
 * Proxies
 * Generadores
 
+<div align="right">
+  <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
+
 ### Como funciona
 * Javascript Engine
 * Herencia prototipal
 * Event Loop
 
+<div align="right">
+  <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
+
 ### Entornos de programación
 * Browser
 * DOM Api
+
+<div align="right">
+  <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
 
 ### Versado en código
 * Hay que leer código
 * Mucho
 * Constantemente
 
+<div align="right">
+  <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
+
 ### Mejores prácticas
 * No reinventamos la rueda
 * Probamos nuestro código
+
+<div align="right">
+  <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
 
 ### Ética
 * Ser responsable
@@ -72,13 +101,17 @@
 * Saber decir que no
 * No hacer daño
 
+<div align="right">
+  <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
+
 ### Experiencia
 * Nada le gana a esto
 * No se puede enseñar
 * Está en ti
 * Perseverancia
 
-<div align="right">
+<div align="right" id="infografia">
   <small><a href="#index">🡡 volver al inicio</a></small>
 </div>
 
@@ -86,35 +119,43 @@
   <img src="./md/Infografia.jpg" alt="infografia">
 </div>
 
+<div align="right">
+  <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
+
 ## Como llega un script al navegador
 
 ### DOM
 
-Es la representación de un archivo HTML en un objeto
+*Document Object Model* es la representación que hace el navegador de un documento HTML en un objeto.
 
 <div align="center">
   <img src="./md/dom.jpg" alt="infografia" max-width="700px">
 </div>
 
-Cuando el navegador recibe HTML, recibe todo esto y lo procesa, convirtiendola a una estructura de arbol
+Una vez que el navegador reciba este documento HTML lo procesara convirtinedolo en una estructura similiar a la de un __árbol__.
+
+Esto es lo que se conoce como __DOM__.
 
 <div align="center">
   <img src="./md/arbol.jpg" alt="arbol" max-width="700px">
 </div>
 
-Cuando termina de procesarlo es que ocurre el evento **_DOMContentLoaded_**
+Y una vez que termina de procesarlo es que ocurre el evento __*DOMContentLoaded*__.
+
+A partir de este punto tenemos la garantia de que todo nuestro __documento se ha cargado__.
 
 <div align="right">
   <small><a href="#index">🡡 volver al inicio</a></small>
 </div>
 
-### Scripts
+### Script
 
-Script es una etiqueta como cualquier otra, es un elemento
+Script es una __etiqueta HTML__ como cualquier otra, es un elemento.
 
-Pero no todos los scripts son iguales
+Pero no todos los scripts son iguales.
 
-Veamos este ejemplo, tenemos un script con el atributo async y que como source trae google analitycs y otro script embebido tiene 4 lineas
+Veamos este ejemplo, tenemos un __script externo__ con el atributo async y que como source trae google analitycs y otro __script embebido__ que tiene 4 lineas.
 
 <div align="center">
   <img src="./md/script1.jpg" alt="script" max-width="700px">
@@ -125,24 +166,21 @@ Veamos este ejemplo, tenemos un script con el atributo async y que como source t
 </div>
 
 
-### Scripts embebidos 
+### Script embebido
 
-Cuando el DOM se este procesando y se encuentre con una etiqueta script va a detener todo el procesamiento
-hasta que esta termine su ejecución
+El DOM se estara procesando hastsa que se encuentre con una etiqueta __script__, si lo hace ejecutara el script y detendra todo el procesamiento del DOM, una vez que la ejecución finalice retomara el procesamiento del DOM.
 
 <div align="center">
   <img src="./md/script2.jpg" alt="script" max-width="700px">
 </div>
 
-Donde ponemos los scripts son importantes
-
-Consideremos este ejemplo
+Ahora tenemos que considerar en donde __colocamos__ nuestras etiquetas script ya que su __posición__ es importante, consideremos este ejemplo.
 
 <div align="center">
   <img src="./md/script3.jpg" alt="script" max-width="700px">
 </div>
 
-Si corremos este codigo... PAMP
+¿Qué sucedera si ejecutamos este código?... PAMP
 
 <div align="center">
   <img src="./md/script4.jpg" alt="script" max-width="700px">
@@ -160,7 +198,7 @@ Solucion poner el form antes del script
   <small><a href="#index">🡡 volver al inicio</a></small>
 </div>
 
-### Scripts externos
+### Script externo
 Sucede lo mimo cuando se hace un fetching de datos, el DOM se detiene cuando llega al script y no es hasta que se cumpla que el HTMl se seguira procesando
 
 <div align="center">
