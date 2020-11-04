@@ -237,12 +237,27 @@ Pero también tenemos una __3° forma__ de __traer scripts externos__, uasndo el
 </div>
 
 ## Scope
-Por desgracia JavaScript no siempre a tenido el mejor sistema de scope de variables
+Por desgracia JavaScript __no__ siempre ha tenido el __mejor__ sistema de __scope de variables__ 😢.
 
-El Scope o ámbito es lo que define el tiempo de vida de una variable, en que partes de nuestro código pueden ser usadas
+El __*scope*__ o __ámbito de una variable__ define el __alcanze__ de estas por lo que tambien nos dice en que __partes__ de nuesto __código__ estas __varaibles__ pueden ser __accedibles__.
 
 ### Global scope
-Variables disponibles de forma global se usa la palabra var, son accesibles por todos los scripts que se cargan en la página. Aquí hay mucho riesgo de sobreescritura
+Estas son __variables disponibles__ de manera __global__ en __todos__ los __scripts__ que se __carguen__ en la __página__.
+
+Para __definirlas__ usamos la __palabra__ reservada __var__.
+
+En este ambito __existe__ mucho de __riesgo__ de __sobreescritura__ por lo que es __recomendable no usarlas__.
+
+```javascript
+// La variable message y $ estan en el scope global y pueden ser accedidas y modificadas en cualquier parte del código
+var message = 'Hello, Platzi!'
+var $ = message => console.log(`Say: ${message}`)
+```
+
+<div align="right">
+  <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
+
 
 ### Function scope
 Variables declaradas dentro de una función sólo visibles dentro de ella misma (incluyendo los argumentos que se pasan a la función)
