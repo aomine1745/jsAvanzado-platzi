@@ -225,7 +225,7 @@ Y...
   <img src="./md/script8.jpg" alt="script" max-width="700px">
 </div>
 
-#### Atributo defder
+#### Atributo defer
 Pero también tenemos una __3° forma__ de __traer scripts externos__, uasndo el __atributo defer__ la cual funciona de manera similar al atributo async, la petición de nuestro script sucedera de manera asincrona por lo que el __procesamiento__ del DOM __no se detendra__ al momento de la petición pero la __ejecución__ de este mismo __sucedera al final__ del __procesamiento__ del DOM, con esto logramos que el procesamiento __no se detenga__ en ningún momento.
 
 <div align="center">
