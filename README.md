@@ -2,7 +2,7 @@
 
 <div align="center">
   <img src="./md/js.png" alt="js logo" height="200px">
-  <h3 align="center">Ser un profesional es un duro camino lleno de experiencias</h3>
+  <h3 align="center">Ser un profesional de JS es un duro camino lleno de experiencias</h3>
 </div>
 
 ## Index
