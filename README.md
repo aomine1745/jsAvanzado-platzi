@@ -244,7 +244,7 @@ El __*scope*__ o __*ámbito*__ de una variable define el __alcanze__ de estas po
 ### Global scope
 Estas son __variables__ disponibles de manera __global__ en __todos__ los __scripts__ que se __carguen__ en la __página__.
 
-Para __definirlas__ usamos la __palabra__ reservada __var__.
+Para __declararlas__ usamos la __palabra__ reservada __var__.
 
 En este ámbito __existe__ mucho de __riesgo__ de __sobreescritura__ por lo que es __recomendable no usarlas__.
 
@@ -253,21 +253,52 @@ En este ámbito __existe__ mucho de __riesgo__ de __sobreescritura__ por lo que 
 // Pueden ser accedidas y modificadas en cualquier parte del código
 var message = 'Hello, Platzi!'
 var $ = message => console.log(`Say: ${message}`)
+
+$(message) // Say: Hello, Platzi
 ```
 
 <div align="right">
   <small><a href="#index">🡡 volver al inicio</a></small>
 </div>
 
+### Block scope
+Estas variables estan __definidas__ dentro de un __bloque de código__ y __no__ están __disponible fuera de este__.
+
+Por ejemplo __variables declaradas__ dentro de un __*if*, *loop*, *while*, o *for*__.
+
+Para __declararlas__ usamos las __palabras__ reservadas __*let*__ o __*const*__.  
+
+```javascript
+if (true) {
+  const message = 'Hola, PLatzi!'
+
+  console.log(message) // Hola, PLatzi!
+}
+
+console.log(message) // message is not defined
+```
+
+> Si se __declara__ la variable con __*var*__ esta podra ser __accedida__ desde __afuera__ del __bloque de código__.
+
+<div align="right">
+  <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
 
 ### Function scope
 Variables declaradas dentro de una función sólo visibles dentro de ella misma (incluyendo los argumentos que se pasan a la función)
 
-### Block scope
-Variables definidas dentro de un bloque, por ejemplo variables declaradas dentro un loop while o for Se usa let y const para declarar este tipo de variables
+```javascript
+```
+
+<div align="right">
+  <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
 
 ### Module scope
 Cuando se denota un script de tipo module con el atributo type="module las variables son limitadas al archivo en el que están declaradas
+
+```javascript
+```
 
 <div align="right">
   <small><a href="#index">🡡 volver al inicio</a></small>
