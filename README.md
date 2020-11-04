@@ -124,38 +124,35 @@
 </div>
 
 ## Como llega un script al navegador
-
 ### DOM
-
-*Document Object Model* es la representación que hace el navegador de un documento HTML en un objeto.
+*Document Object Model* es la __representación__ que hace el __navegador__ de un documento __HTML__ en un __objeto__.
 
 <div align="center">
   <img src="./md/dom.jpg" alt="infografia" max-width="700px">
 </div>
 
-Una vez que el navegador reciba este documento HTML lo procesara convirtinedolo en una estructura similiar a la de un __árbol__.
+Una vez que el __navegador reciba__ este documento __HTML__ lo __procesara__ convirtinedolo en una __estructura__ similiar a la de un __árbol__.
 
-Esto es lo que se conoce como __DOM__.
+Esto es lo que se __conoce__ como __DOM__.
 
 <div align="center">
   <img src="./md/arbol.jpg" alt="arbol" max-width="700px">
 </div>
 
-Y una vez que termina de procesarlo es que ocurre el evento __*DOMContentLoaded*__.
+Y una vez que __termina__ de __procesarlo__ es que ocurre el __evento *DOMContentLoaded*__.
 
-A partir de este punto tenemos la garantia de que todo nuestro __documento se ha cargado__.
+A partir de este punto tenemos la __garantia__ de que todo nuestro __documento se ha cargado__.
 
 <div align="right">
   <small><a href="#index">🡡 volver al inicio</a></small>
 </div>
 
 ### Script
-
 Script es una __etiqueta HTML__ como cualquier otra, es un elemento.
 
-Pero no todos los scripts son iguales.
+Pero __no__ todos los scripts son __iguales__.
 
-Veamos este ejemplo, tenemos un __script externo__ con el atributo async y que como source trae google analitycs y otro __script embebido__ que tiene 4 lineas.
+Veamos este ejemplo, tenemos un *script externo* con el atributo *async* y que como source trae google analitycs y otro *script embebido* que tiene 4 lineas.
 
 <div align="center">
   <img src="./md/script1.jpg" alt="script" max-width="700px">
@@ -167,58 +164,69 @@ Veamos este ejemplo, tenemos un __script externo__ con el atributo async y que c
 
 
 ### Script embebido
-
-El DOM se estara procesando hastsa que se encuentre con una etiqueta __script__, si lo hace ejecutara el script y detendra todo el procesamiento del DOM, una vez que la ejecución finalice retomara el procesamiento del DOM.
+El __DOM__ se estara __procesando__ hasta que se __encuentre__ con una etiqueta __script__, si lo hace __ejecutara__ el script y __detendra__ todo el __procesamiento__ del DOM, una vez que la ejecución __finalice retomara__ el __procesamiento__ del DOM.
 
 <div align="center">
   <img src="./md/script2.jpg" alt="script" max-width="700px">
 </div>
 
-Ahora tenemos que considerar en donde __colocamos__ nuestras etiquetas script ya que su __posición__ es importante, consideremos este ejemplo.
+#### Posición del script
+
+Ahora tenemos que __considerar__ en donde colocamos nuestras etiquetas __script__ ya que su __posición__ es __importante__, consideremos este ejemplo.
 
 <div>
   <img src="./md/script3.jpg" alt="script" max-width="700px">
 </div>
 
-¿Qué sucedera si ejecutamos este código?... PAMP
+¿Qué sucedera si __ejecutamos__ este código?
+
+__...PAMP!__
 
 <div align="center">
   <img src="./md/script4.jpg" alt="script" max-width="700px">
 </div>
 
-Dijimos que el procesamiento de HTML se detiene y al ejecutarse el script la etiqueta form no existe por lo que genera un TyperError
+Al momento de __ejecutar__ nuestro código obtendremos un __TypeError__, ¿Por qué?.
 
-Solucion poner el form antes del script
+El documento __HTML__ empezara a __procesarse__ hasta que se encuentre con nuestro __script__, entonces se detendra y lo __ejecutara__, en este script estamos __buscando__ la etiqueta con el *ID loginForm* pero esta etiqueta aún __no existe__ en el DOM porque el procesamiento aún no ha llegado hasta donde se encuentra este elemento por lo que nuestro script __no lo econtrara__ y generara el __error__.
+
+#### Solución
+La __solución__ más práctica es __colocar__ nuestra __etiqueta script__ que busca cierto elemento __después__ de ese elemento.
 
 <div align="center">
   <img src="./md/script5.jpg" alt="script" max-width="700px">
 </div>
+
+De esta manera llegamos a la __conclución__ de que el __mejor lugar__ para __colocar__ nuestra __etiqueta script__ es al __final de nuestro body__ para que no tenga ningún problema con nuestros elementos HTML.
 
 <div align="right">
   <small><a href="#index">🡡 volver al inicio</a></small>
 </div>
 
 ### Script externo
-Sucede lo mimo cuando se hace un fetching de datos, el DOM se detiene cuando llega al script y no es hasta que se cumpla que el HTMl se seguira procesando
+Sucede lo mismo cuando se hace una __petición__ de datos, el __DOM detiene__ el __procesamiento__ cuando llega al script, empieza a __traer__ el __script__ del source especificado, luego lo __ejecuta__ y una vez que __termina__ la ejecución del script es que se __reanuda__ el __procesamiento__ del DOM.
 
 <div align="center">
   <img src="./md/script6.jpg" alt="script" max-width="700px">
 </div>
 
-Ahora se le puede dar un atributo async a los fetching externos, con esto la peticion va a ocurrir asyncronamente sin interrumpir el proceso del DOM, so se detendra cuando se cumpla y se ejecute el script
+#### Atributo async
+Ahora podemos usar un __atributo__ para la __etiqueta script__ llamada __*async*__, con la cual la __petición__ del __script__ se __realizara__ de forma __asíncrona__ con lo cual podemos __evitar__ que el __procesamiento__ del DOM se __detenga__ en el momento de la petición y __únicamente__ se __detendra__ para __ejecutar__ este mismo y __una vez finalizada__ su ejecución __seguira procesando__ lo que quede del DOM.
 
 <div align="center">
   <img src="./md/script7.jpg" alt="script" max-width="700px">
 </div>
 
-¿Qué pasa si yo tengo 2 scripts asincronos?
+Y...
+
+¿__Qué pasa__ si yo tengo __2 o más__ scripts __asincronos__?
 
 <div align="center">
   <img src="./md/script8.jpg" alt="script" max-width="700px">
 </div>
 
-Tenemos una 3ra forma para traer archivos externos - defer,
-Similar al async, el fetching de datos no dentendra el proceso del DOM pero la ejecución ocurrira al final
+#### Atributo defder
+Pero también tenemos una __3° forma__ de __traer scripts externos__, uasndo el __atributo defer__ la cual funciona de manera similar al atributo async, la petición de nuestro script sucedera de manera asincrona por lo que el __procesamiento__ del DOM __no se detendra__ al momento de la petición pero la __ejecución__ de este mismo __sucedera al final__ del __procesamiento__ del DOM, con esto logramos que el procesamiento __no se detenga__ en ningún momento.
 
 <div align="center">
   <img src="./md/script9.jpg" alt="script" max-width="700px">
