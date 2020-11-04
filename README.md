@@ -26,6 +26,7 @@
   - [Function scope](#function-scope)
   - [Block scope](#block-scope)
   - [Module scope](#module-scope)
+  - [Scope en acción](#scope-en-acción)
 - [Closures](#closures)
   - [IIFE](#iife)
 
@@ -141,7 +142,7 @@ Esto es lo que se __conoce__ como __DOM__.
 
 Y una vez que __termina__ de __procesarlo__ es que ocurre el __evento *DOMContentLoaded*__.
 
-A partir de este punto tenemos la __garantia__ de que todo nuestro __documento se ha cargado__.
+A partir de este punto tenemos la __garantía__ de que todo nuestro __documento se ha cargado__.
 
 <div align="right">
   <small><a href="#index">🡡 volver al inicio</a></small>
@@ -197,7 +198,7 @@ La __solución__ más práctica es __colocar__ nuestra __etiqueta script__ que b
   <img src="./md/script5.jpg" alt="script" max-width="700px">
 </div>
 
-De esta manera llegamos a la __conclución__ de que el __mejor lugar__ para __colocar__ nuestra __etiqueta script__ es al __final de nuestro body__ para que no tenga ningún problema con nuestros elementos HTML.
+> De esta manera llegamos a la __conclución__ de que el __mejor lugar__ para __colocar__ nuestra __etiqueta script__ es al __final de nuestro body__ para que no tenga ningún problema con nuestros elementos HTML.
 
 <div align="right">
   <small><a href="#index">🡡 volver al inicio</a></small>
@@ -246,7 +247,7 @@ Estas son __variables__ disponibles de manera __global__ en __todos__ los __scri
 
 Para __declararlas__ usamos la __palabra__ reservada __var__.
 
-En este ámbito __existe__ mucho de __riesgo__ de __sobreescritura__ por lo que es __recomendable no usarlas__.
+En este ámbito __existe__ mucho __riesgo__ de __sobreescritura__ por lo que es __recomendable no usarlas__.
 
 ```javascript
 // La variable message y $ estan en el scope global
@@ -262,13 +263,14 @@ $(message) // Say: Hello, Platzi
 </div>
 
 ### Block scope
-Estas variables estan __definidas__ dentro de un __bloque de código__ y __no__ están __disponible fuera de este__.
+Estas __variables__ estan __declaradas__ dentro de un __bloque de código__ y __no__ están __disponible fuera de este__.
 
 Por ejemplo __variables declaradas__ dentro de un __*if*, *loop*, *while*, o *for*__.
 
 Para __declararlas__ usamos las __palabras__ reservadas __*let*__ o __*const*__.  
 
 ```javascript
+// La variable message solo sera accesible dentro del bloque
 if (true) {
   const message = 'Hola, PLatzi!'
 
@@ -285,9 +287,21 @@ console.log(message) // message is not defined
 </div>
 
 ### Function scope
-Variables declaradas dentro de una función sólo visibles dentro de ella misma (incluyendo los argumentos que se pasan a la función)
+Estas __variables__ son __declaradas__ dentro de una __función__ y solo se puede __acceder__ a ellas __dentro__ de la misma función(__incluyendo__ sus __argumentos__).
+
+Para __declararlas__ podemos usar las __palabras__ reservadas __*var*__, __*let*__ o __*const*__.  
 
 ```javascript
+// La variable message y el agumento name solo estan disponible dentro de la función
+function sayHello (name) {
+  const messagge = `Hello, ${name}`
+
+  console.log(message)
+}
+
+sayHello('aomine') // Hello, aomine
+
+console.log(message) // message is not defined
 ```
 
 <div align="right">
@@ -295,9 +309,65 @@ Variables declaradas dentro de una función sólo visibles dentro de ella misma 
 </div>
 
 ### Module scope
-Cuando se denota un script de tipo module con el atributo type="module las variables son limitadas al archivo en el que están declaradas
+Cuando se denota un __script__ de __tipo module__ las __variables__ declaradas dentro del archivo __solo__ pueden ser __accedidas__ __dentro de este mismo__.
+
+```html
+<script type="module">
+  // La variable message solo puede ser accedida en el script en el que fue declarado.
+  var message = 'Hola Mundo!'
+
+  console.log(message) // Hola Mundo!
+</script>
+
+<script>
+  console.log(message) // message is not defined
+</script>
+```
+
+<div align="right">
+  <small><a href="#index">🡡 volver al inicio</a></small>
+</div>
+
+### Scope en acción
+Ahora veremos en acción a las function scope y block scope y también veremos solución práctica implementacndo una caracteristica de EcmaScript 6.
 
 ```javascript
+// Esto imprimira 10 veces el número 10 ya que i aumenta hasta 10 y es el valor final que imprimira
+function printNumbers () {
+  for(var i = 0; i < 10; i++) {
+    setTimeout(() => {
+      console.log(i)
+    }, 100)
+  }
+}
+
+printNumbers() // 10 10 10 10 10 10 10 10 10 10
+
+// Al pasar el valor de i a una función como parametro esta recoordara el valor que se le paso e imprimira los números del 0 al 9
+function printNumbers() {
+  for(var i = 0; i < 10; i++) {
+    function eventuallyPrintNumber (n) {
+      setTimeout(() => {
+        console.log(n)
+      }, 100)
+    }
+
+    eventuallyPrintNumber(i)
+  }
+}
+
+printNumbers() // 0 1 2 3 4 5 6 7 8 9
+
+// Y si usamos let en vez de var entonces en cada iteración se recordara el valor de i y se imprimiran los numeros del 0 a 9
+function printNumbers() {
+  for(let i = 0; i < 10; i++) {
+      setTimeout(function() {
+        console.log(i)
+      }, 100)
+  }
+}
+
+printNumbers() // 0 1 2 3 4 5 6 7 8 9
 ```
 
 <div align="right">
