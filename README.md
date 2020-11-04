@@ -174,7 +174,7 @@ El __DOM__ se estara __procesando__ hasta que se __encuentre__ con una etiqueta 
 
 Ahora tenemos que __considerar__ en donde colocamos nuestras etiquetas __script__ ya que su __posición__ es __importante__, consideremos este ejemplo.
 
-<div>
+<div align="center">
   <img src="./md/script3.jpg" alt="script" max-width="700px">
 </div>
 
