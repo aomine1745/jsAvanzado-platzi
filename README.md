@@ -329,7 +329,7 @@ Cuando se denota un __script__ de __tipo module__ las __variables__ declaradas d
 </div>
 
 ### Scope en acción
-Ahora veremos en acción a las function scope y block scope y también veremos solución práctica implementacndo una caracteristica de EcmaScript 6.
+Ahora veremos en __acción__ a las __*function scope*__ y __*block scope*__ y también veremos __solución__ práctica __implementacndo__ una caracteristica de __EcmaScript 6__.
 
 ```javascript
 // Esto imprimira 10 veces el número 10 ya que i aumenta hasta 10 y es el valor final que imprimira
@@ -344,7 +344,7 @@ function printNumbers () {
 printNumbers() // 10 10 10 10 10 10 10 10 10 10
 
 // Al pasar el valor de i a una función como parametro esta recoordara el valor que se le paso e imprimira los números del 0 al 9
-function printNumbers() {
+function printNumbers () {
   for(var i = 0; i < 10; i++) {
     function eventuallyPrintNumber (n) {
       setTimeout(() => {
@@ -359,9 +359,9 @@ function printNumbers() {
 printNumbers() // 0 1 2 3 4 5 6 7 8 9
 
 // Y si usamos let en vez de var entonces en cada iteración se recordara el valor de i y se imprimiran los numeros del 0 a 9
-function printNumbers() {
+function printNumbers () {
   for(let i = 0; i < 10; i++) {
-      setTimeout(function() {
+      setTimeout(() => {
         console.log(i)
       }, 100)
   }
