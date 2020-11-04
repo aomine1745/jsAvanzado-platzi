@@ -152,7 +152,7 @@ Script es una __etiqueta HTML__ como cualquier otra, es un elemento.
 
 Pero __no__ todos los scripts son __iguales__.
 
-Veamos este ejemplo, tenemos un *script externo* con el atributo *async* y que como source trae google analitycs y otro *script embebido* que tiene 4 lineas.
+> Veamos este ejemplo, tenemos un *script externo* con el atributo *async* y que como source trae google analitycs y otro *script embebido* que tiene 4 lineas.
 
 <div align="center">
   <img src="./md/script1.jpg" alt="script" max-width="700px">
