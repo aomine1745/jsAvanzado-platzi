@@ -329,7 +329,7 @@ Cuando se denota un __script__ de __tipo module__ las __variables__ declaradas d
 </div>
 
 ### Scope en acción
-Ahora veremos en __acción__ a las __*function scope*__ y __*block scope*__ y también veremos __solución__ práctica __implementacndo__ una caracteristica de __EcmaScript 6__.
+Ahora veremos en __acción__ a las __*function scope*__ y __*block scope*__ y también veremos una __solución__ práctica __implementando__ una característica de __EcmaScript 6__.
 
 ```javascript
 // Esto imprimira 10 veces el número 10 ya que i aumenta hasta 10 y es el valor final que imprimira
@@ -375,13 +375,13 @@ printNumbers() // 0 1 2 3 4 5 6 7 8 9
 </div>
 
 ## Closures
-Son funciones que regresan una función o un objeto con funciones que mantienen las variables que fueron declaradas fuera de su scope
+Son funciones que regresan una función o un objeto con funciones que mantienen las variables que fueron declaradas fuera de su scope.
 
-Tambien podriamos decir que son una combinación del scope de una función y la función donde fue definida
+Tambien podriamos decir que son una combinación del scope de una función y la función donde fue definida.
 
 **Ejemplo**
 
-Generamos una función que retorna otra función con lo cual la variable **_colorMessage_** no podra ser accedida ni modificada
+Generamos una función que retorna otra función con lo cual la variable __*colorMessage*__ no podra ser accedida ni modificada.
 
 ```javascript
 function makeColorPrinter(color) {
@@ -393,25 +393,25 @@ function makeColorPrinter(color) {
 }
 ```
 
-Instanciamos la variable **_greenColorPrinter_** usando nuestro closure
+Instanciamos la variable __*greenColorPrinter*__ usando nuestro closure.
 
 ```javascript
 let greenColorPrinter = makeColorPrinter('green')
 greenColorPrinter() // The color is green
 ```
 
-Ahora la variable **_greenColorPrinter_** se convirtio en una función que recuerda el valor inicial
+Ahora la variable **_greenColorPrinter_** se convirtio en una función que recuerda el valor inicial.
 
-Los closures nos sirven para tener algo parecido a variables privadas, característica que no tiene JavaScript por default. Es decir encapsulan variables que no pueden ser modificadas directamente por otros objetos, sólo por funciones pertenecientes al mismo
+Los closures nos sirven para tener algo parecido a variables privadas, característica que no tiene JavaScript por default. Es decir encapsulan variables que no pueden ser modificadas directamente por otros objetos, sólo por funciones pertenecientes al mismo.
 
 <div align="right">
   <small><a href="#index">🡡 volver al inicio</a></small>
 </div>
 
 ### IIFE
-Inmediately invoked function expressions
+Inmediately invoked function expressions.
 
-Invocamos la función inmediatamente y todo lo que tenga dentro no podra ser accedido ni modificado por el scope global
+Invocamos la función inmediatamente y todo lo que tenga dentro no podra ser accedido ni modificado por el scope global.
 
 ```javascript
 (function() {
@@ -425,9 +425,9 @@ Invocamos la función inmediatamente y todo lo que tenga dentro no podra ser acc
 })()
 ```
 
-Una de las razones para usarlas es para mantener la privavidad de los datos
+Una de las razones para usarlas es para mantener la privavidad de los datos.
 
-Pero actualmente y gracias a ES6 ya no es necesario recurrir a este metodo ya que ahora tenemos la posibilidad de manejar el scope de bloque gracias a let y const
+Pero actualmente y gracias a ES6 ya no es necesario recurrir a este metodo ya que ahora tenemos la posibilidad de manejar el scope de bloque gracias a __*let*__ y __*const*__.
 
 <div align="right">
   <small><a href="#index">🡡 volver al inicio</a></small>
